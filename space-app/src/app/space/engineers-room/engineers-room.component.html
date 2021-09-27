@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+  <label for="typeShip">Wybierz typ statku</label>
+  <select id="typeShip" formControlName="shipType">
+    <option value="default">Select a type</option>
+    <option *ngFor="let shipType of spaceShipTypes" [value]="shipType.type">{{shipType.name}}</option>
+</select>
+<p class="error" *ngIf="form.get('shipCount')!.hasError('required')">
+  musi być wypełnione
+</p>
+  </div>
+  <div class="form-control">
+    <label for="shipCount">Wybierz ilość statków</label>
+    <input type="number" id="shipCount" formControlName="shipCount">
+    <p class="error" *ngIf="form.get('shipCount')!.hasError('required')">
+      musi być wypełnione
+    </p>
+    <span *ngIf="form.get('shipCount')!.hasError('min') || form.get('shipCount')!.hasError('max')" class="error">
+      podaj liczbę z zakresu 1-5
+    </span>
+  </div>
+  <button type="submit" [disabled]="form.invalid">Produkuj</button>
+</form>

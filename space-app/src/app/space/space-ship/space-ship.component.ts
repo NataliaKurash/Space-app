@@ -11,7 +11,11 @@ export class SpaceShipComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.spaceShip)
   }
 
+
+
+  public setPilot(){
+
+  }
 }

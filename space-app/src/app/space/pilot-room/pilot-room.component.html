@@ -1,1 +1,4 @@
-<app-pilot ngFor="let pilot of pilots"></app-pilot>
+<app-pilot *ngFor="let pilot of pilots" [pilot]="pilot" [class.selected]="selectedPilot === pilot">
+<button *ngIf="selectedPilot !== pilot" (click)="select(pilot)">Zaznacz</button>
+<button *ngIf="selectedPilot === pilot" (click)="select(null)">Usuń</button>
+</app-pilot>
