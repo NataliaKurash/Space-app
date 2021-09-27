@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    color: white;
+    font-family: Helvetica, sans-serif;
+    background-size: 100vw 100vh;
+    background-image: url('/assets/img/kosmos_planeta_prostranstvo_133670_3840x2160.jpg');
+  }
