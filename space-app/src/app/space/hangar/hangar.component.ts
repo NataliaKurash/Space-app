@@ -4,6 +4,7 @@ import { FighterShip } from '../fighter-ship';
 import { Pilot } from '../pilot';
 import { PilotRoomComponent } from '../pilot-room/pilot-room.component';
 import { SpaceShip } from '../space-ship';
+import { SpaceShipService } from '../space-ship.service';
 
 @Component({
   selector: 'app-hangar',
@@ -11,14 +12,14 @@ import { SpaceShip } from '../space-ship';
   styleUrls: ['./hangar.component.css']
 })
 export class HangarComponent implements OnInit {
-  spaceShips: SpaceShip[] = [];
+  spaceShips = this.spaceShipService.hangarShips;
   selectedPilot: Pilot | null = null;
   @ViewChild(PilotRoomComponent) pilotRooms!: PilotRoomComponent ;
-  constructor() { }
+  constructor(private spaceShipService: SpaceShipService) { }
 
   ngOnInit(): void {
-    this.spaceShips.push(new FighterShip(new Pilot('Lee Adam', './assets/img/images.png')));
-    this.spaceShips.push(new BomberShip());
+    // this.spaceShips.push(new FighterShip(new Pilot('Lee Adam', './assets/img/images.png')));
+    // this.spaceShips.push(new BomberShip());
   }
 
   public setSelectedPilot(pilot: Pilot | null){

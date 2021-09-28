@@ -1,5 +1,5 @@
 <div class="hangar">
-  <app-space-ship *ngFor="let spaceShip of spaceShips" [spaceShip]="spaceShip">
+  <app-space-ship *ngFor="let spaceShip of spaceShips | async" [spaceShip]="spaceShip">
   <button *ngIf="selectedPilot && !spaceShip.pilot" (click)="setPilot(spaceShip)">Pilotuj</button>
   <button *ngIf="spaceShip.pilot" (click)="deletePilot(spaceShip)">Opuść</button>
   </app-space-ship>

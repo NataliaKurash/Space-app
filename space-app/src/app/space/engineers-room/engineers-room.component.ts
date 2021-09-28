@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ShipType } from '../ship-type';
+import { SpaceShip } from '../space-ship';
 import { SpaceShipType } from '../space-ship-type';
+import { SpaceShipService } from '../space-ship.service';
 
 @Component({
   selector: 'app-engineers-room',
@@ -10,11 +14,15 @@ import { SpaceShipType } from '../space-ship-type';
 })
 export class EngineersRoomComponent implements OnInit {
   form: FormGroup;
- spaceShipTypes: ShipType[] = [
-    {name: 'Myśliwiec', type: SpaceShipType.Fighter},
-    {name: 'Bombowiec', type: SpaceShipType.Bomber}
+  spaceShipTypes: ShipType[] = [
+    {name: 'Fighter', type: SpaceShipType.Fighter},
+    {name: 'Bomber', type: SpaceShipType.Bomber}
   ];
-  constructor() {}
+  shipCount = this.spaceShipService.hangarShips.pipe(
+   map((ships) => ships.length)
+  );
+  shoulProducing: boolean;
+  constructor(public spaceShipService: SpaceShipService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -24,6 +32,10 @@ export class EngineersRoomComponent implements OnInit {
 
 }
 public onSubmit(){
-  console.log(this.form.value);
+  this.shoulProducing = true;
+  this.spaceShipService.produceShips(this.form.value)
+  .subscribe({
+    complete: () => this.shoulProducing = false
+  });
 }
 }

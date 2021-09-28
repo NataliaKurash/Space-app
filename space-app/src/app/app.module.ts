@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { A2sCommModule } from 'a2s-comm';
@@ -14,7 +15,8 @@ import { SpaceModule } from './space/space.module';
     BrowserModule,
     AppRoutingModule,
     A2sCommModule,
-    SpaceModule
+    SpaceModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

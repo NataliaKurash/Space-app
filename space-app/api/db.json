@@ -1,0 +1,22 @@
+{
+  "pilots": [
+    {
+      "id": 1,
+      "firstName": "Peter",
+      "lastName": "Quill",
+      "imageUrl": "/assets/img/lory.jpg"
+    },
+    {
+      "id": 2,
+      "firstName": " Gamora",
+      "lastName": "",
+      "imageUrl": "/assets/img/gamora.jpg"
+    },
+    {
+      "id": 3,
+      "firstName": "Rocket",
+      "lastName": "",
+      "imageUrl": "/assets/img/lary.jpg"
+    }
+  ]
+}

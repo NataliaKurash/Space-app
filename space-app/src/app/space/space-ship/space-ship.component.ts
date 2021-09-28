@@ -12,10 +12,4 @@ export class SpaceShipComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
-
-  public setPilot(){
-
-  }
 }
